@@ -29,7 +29,6 @@ void cir(int x,int y,int d)
  frame();
 }
 
-
 void main()
 {
  clrscr();
@@ -39,25 +38,26 @@ void main()
  cout<<"\nControls:\nUse W, A, D, S to move (up), (left), (right) and (down) respectively. When you finally know the position press (L) to confirm...Its easy..Try it!";
  cout<<"\nEnter any key to continue :-)";
  getch();
+ /* Code for getting graphics to work.
+   Check the refernace in sample graphics.h file */
  int gdriver = DETECT, gmode, errorcode;
  initgraph(&gdriver, &gmode, "c:\\tc\\bgi");
  setbkcolor(4);
  frame();
  unsigned int seedval;
+ // Calculate time.
  time_t t;
  seedval=(unsigned)time(&t);
  srand(seedval);
-
 
   int x=3,y=14;
   int nmaxx=619;
   int nmaxy=474;
 
-
   int score=0;
   int d=4000;
   int level=1;
- level:
+ level:  // Setting level. With each level increase, we decrement the time.
    int i=(rand()%569)+53;
    int j=(rand()%424)+64;
    cleardevice();
@@ -71,7 +71,7 @@ void main()
  frame();
  setcolor(15);
  line(x,y,x+14,y);
- char a=getch();
+ char a = getch();
 
  if(a=='a')
  {
@@ -81,22 +81,22 @@ void main()
   }
    goto again;
  }
+
  else if(a=='d')
  {
   if(x>=3&&x<nmaxx)
   {
     x+=14;
   }
-
   goto again;
  }
+
  else if(a=='s')
  {
   if(y>=14&&y<nmaxy)
   {
    y+=10;
   }
-
   goto again;
  }
 
@@ -107,50 +107,41 @@ void main()
    y-=10;
 
   }
-
   goto again;
  }
 
-else if(a=='l')
-{
+ else if(a=='l')
+ {
    if(x==i&&y==j)
    {
     r=50;
     score+=r;
 
    }
-  else if(x==i&&y>j)
-   {
+   else if(x==i&&y>j)
+    {
       if(y-j>=0&&y-j<=15)
       {
        r=40;
        score+=r;
 
-
       }
-     else if(y-j>=16&&y-j<=30)
-     {
-       r=30;
-       score+=r;
-
-
-     }
-    else if(y-j>=31&&y-j<=45)
-     {
-       r=20;
-       score+=r;
-
-
+   else if(y-j>=16&&y-j<=30)
+    {
+      r=30;
+      score+=r;
+    }
+   else if(y-j>=31&&y-j<=45)
+    {
+      r=20;
+      score+=r;
      }
 
     else if(y-j>=46&&y-j<=60)
      {
        r=40;
        score+=r;
-
-
      }
-
 
    }
    else if(x==i&&j>y)
@@ -822,12 +813,9 @@ else if(a=='l')
      {
        r=10;
        score+=r;
-
-
      }
 
    }
-
   }
  }
    level++;
@@ -864,9 +852,9 @@ else if(a=='l')
    gotoxy(5,16);
    cout<<"Concept              \tAbhishek";
    gotoxy(5,17);
-   cout<<"Lead Programmer      \tAbhishek";
+   cout<<"Developer 1      \tAbhishek";
    gotoxy(5,18);
-   cout<<"Assistant programmer \tRishav";
+   cout<<"Developer 2      \tRishav";
    for(int j =1;j<=25;j++)
    {
     gotoxy(1,1);
@@ -876,7 +864,7 @@ else if(a=='l')
 
    cleardevice();
    gotoxy(5,21);
-   cout<<"Thanks For Playing.......";
+   cout<<"Thanks For Playing...";
    for( j=1;j<=25;j++)
    {
     gotoxy(1,1);
@@ -904,11 +892,11 @@ else if(a=='l')
    cout<<"Credits";
 
    gotoxy(5,16);
-   cout<<"Concept              \tAbhishek";
+   cout<<"Concept           \tAbhishek";
    gotoxy(5,17);
-   cout<<"Lead Programmer      \tAbhishek";
+   cout<<"Developer 1      \tAbhishek";
    gotoxy(5,18);
-   cout<<"Assistant programmer \tRishav";
+   cout<<"Developer 2      \tRishav";
 
    for(int j=1;j<=25;j++)
    { gotoxy(1,1);
@@ -917,7 +905,7 @@ else if(a=='l')
    }
    cleardevice();
    gotoxy(5,21);
-   cout<<"Thanks For Playing.......";
+   cout<<"Thanks For Playing...";
    for(j=1;j<=25;j++)
    {
     gotoxy(1,1);
